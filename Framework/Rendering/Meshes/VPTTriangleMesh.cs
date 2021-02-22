@@ -1,7 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Hx001.Framework.Rendering
+namespace Hx001.Framework.Rendering.Meshes
 {
     public class VPTTrianlgeMesh : GenericTriangleMesh<VertexPositionTexture>
     {

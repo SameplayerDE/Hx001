@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 
-namespace Hx001.Framework.Rendering
+namespace Hx001.Framework.Rendering.Meshes
 {
     public class GenericMesh<T> where T : IVertexType
     {
