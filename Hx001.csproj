@@ -4,6 +4,10 @@
         <TargetFramework>netcoreapp3.1</TargetFramework>
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>C:\Users\asame\Documents\C# DLLs</OutputPath>
+    </PropertyGroup>
+    
     <ItemGroup>
       <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.0.1641" />
     </ItemGroup>
