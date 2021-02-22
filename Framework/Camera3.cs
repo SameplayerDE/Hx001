@@ -26,7 +26,7 @@ namespace Hx001.Framework
             Matrix RotationMatrixXZ = Matrix.Multiply(Matrix.CreateRotationX(MathHelper.ToRadians(Transform.Rotation.X)), Matrix.CreateRotationZ(MathHelper.ToRadians(Transform.Rotation.Z)));
             Vector3 Target = Vector3.Transform(new Vector3(0, 1, 0), RotationMatrixXZ);
 
-            View = Matrix.CreateLookAt(Transform.Position, Vector3.Zero, new Vector3(0, 0, 1));
+            View = Matrix.CreateLookAt(Transform.Position, Target + Transform.Position, new Vector3(0, 0, 1));
         }
     }
 }
