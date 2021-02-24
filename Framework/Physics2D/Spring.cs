@@ -22,15 +22,16 @@ namespace Hx001.Framework.Physics2D
         public void Update(GameTime gameTime)
         {
             Vector2 force = B.Position - A.Position;
-            float magnitude = force.Length();
-            if (Math.Abs(magnitude - Lenght) > 0.01f)
-            {
-                force.Normalize();
-                force *= (Stiffness * magnitude);
-                A.ApplyForce(force);
-                force *= -1;
-                B.ApplyForce(force);
-            }
+            float x = force.Length() - Lenght;
+            force.Normalize();
+            force *= (Stiffness * x);
+            A.ApplyForce(force);
+            force *= -1;
+            B.ApplyForce(force);
+            //if (Math.Abs(magnitude - Lenght) > 0.01f)
+            //{
+                
+            //}
         }
 
     }

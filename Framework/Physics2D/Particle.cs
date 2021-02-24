@@ -9,6 +9,8 @@ namespace Hx001.Framework.Physics2D
         public Vector2 Position;
         public bool IsLocked = false;
 
+        public Rectangle Hitbox => new Rectangle(Position.ToPoint(), new Point(5, 5));
+
         public Particle(float x, float y)
         {
             Position.X = x;
@@ -34,7 +36,7 @@ namespace Hx001.Framework.Physics2D
 
             Velocity += Acceleration;
             Position += Velocity;
-            Velocity *= 0.99f; // reduce Velocity
+            Velocity *= 0.98f; // reduce Velocity
             Acceleration.X = 0; // reset Acc
             Acceleration.Y = 0; // reset Acc
         }

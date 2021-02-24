@@ -8,6 +8,7 @@ namespace Hx001.Framework.Physics2D
 
         private List<Particle> _particles = new List<Particle>();
         private List<Spring> _springs = new List<Spring>();
+        private List<Behavior> _behaviors = new List<Behavior>();
         
         public void Add(Particle particle)
         {
@@ -18,6 +19,11 @@ namespace Hx001.Framework.Physics2D
         {
             _springs.Add(spring);
         }
+        
+        public void Add(Behavior behavior)
+        {
+            _behaviors.Add(behavior);
+        }
 
         public void Update(GameTime gameTime)
         {
@@ -27,6 +33,14 @@ namespace Hx001.Framework.Physics2D
             }
             foreach (var particle in _particles)
             {
+                foreach (var behavior in _behaviors)
+                {
+                    if (behavior is GravityBehavior)
+                    {
+                        GravityBehavior gravityBehavior = behavior as GravityBehavior;
+                        particle.ApplyForce(gravityBehavior.Gravity);
+                    }
+                }
                 particle.Update(gameTime);
             }
         }
