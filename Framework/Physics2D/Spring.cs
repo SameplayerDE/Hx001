@@ -1,4 +1,7 @@
-﻿namespace Hx001.Framework.Physics2D
+﻿using System;
+using Microsoft.Xna.Framework;
+
+namespace Hx001.Framework.Physics2D
 {
     public class Spring
     {
@@ -14,6 +17,20 @@
             B = b;
             Stiffness = stiffness;
             Lenght = lenght;
+        }
+
+        public void Update(GameTime gameTime)
+        {
+            Vector2 force = B.Position - A.Position;
+            float magnitude = force.Length();
+            if (Math.Abs(magnitude - Lenght) > 0.01f)
+            {
+                force.Normalize();
+                force *= (Stiffness * magnitude);
+                A.ApplyForce(force);
+                force *= -1;
+                B.ApplyForce(force);
+            }
         }
 
     }
