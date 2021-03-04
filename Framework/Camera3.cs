@@ -21,6 +21,8 @@ namespace Hx001.Framework
             Projection = Matrix.CreateOrthographic(width, height, 0.1f, 1000f);
         }
         
+        
+        
         public void Update(GameTime gameTime)
         {
             Matrix RotationMatrixXZ = Matrix.Multiply(Matrix.CreateRotationX(MathHelper.ToRadians(Transform.Rotation.X)), Matrix.CreateRotationZ(MathHelper.ToRadians(Transform.Rotation.Z)));

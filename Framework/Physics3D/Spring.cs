@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace Hx001.Framework.Physics2D
+namespace Hx001.Framework.Physics3D
 {
     public class Spring
     {
@@ -11,11 +11,6 @@ namespace Hx001.Framework.Physics2D
         public float Stiffness;
         public float Lenght;
 
-        public Spring()
-        {
-            
-        }
-        
         public Spring(Particle a, Particle b, float stiffness, float lenght)
         {
             A = a;
@@ -24,12 +19,12 @@ namespace Hx001.Framework.Physics2D
             Lenght = lenght;
         }
 
-        public virtual void Update(GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-            Vector2 force = B.Position - A.Position;
+            Vector3 force = B.Position - A.Position;
             float x = force.Length() - Lenght;
-            force.Normalize();
-            force *= (Stiffness * x);
+            //force.Normalize();
+            //force *= (Stiffness * x);
             A.ApplyForce(force);
             force *= -1;
             B.ApplyForce(force);

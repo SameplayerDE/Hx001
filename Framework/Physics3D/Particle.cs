@@ -1,31 +1,27 @@
 ﻿using Microsoft.Xna.Framework;
 
-namespace Hx001.Framework.Physics2D
+namespace Hx001.Framework.Physics3D
 {
     public class Particle
     {
-        public Vector2 Acceleration;
-        public Vector2 Velocity;
-        public Vector2 Position;
+        public Vector3 Acceleration;
+        public Vector3 Velocity;
+        public Vector3 Position;
         public bool IsLocked = false;
 
-        public Rectangle Hitbox
-        {
-            get { return new Rectangle(Position.ToPoint(), new Point(10, 10)); }
-        }
-
-        public Particle(float x, float y)
+        public Particle(float x, float y, float z)
         {
             Position.X = x;
             Position.Y = y;
+            Position.Z = z;
         }
 
-        public Particle(Vector2 position) : this(position.X, position.Y)
+        public Particle(Vector3 position) : this(position.X, position.Y, position.Z)
         {
           //  
         }
 
-        public void ApplyForce(Vector2 force)
+        public void ApplyForce(Vector3 force)
         {
             Acceleration += force;
         }
@@ -42,6 +38,7 @@ namespace Hx001.Framework.Physics2D
             Velocity *= 0.98f; // reduce Velocity
             Acceleration.X = 0; // reset Acc
             Acceleration.Y = 0; // reset Acc
+            Acceleration.Z = 0; // reset Acc
         }
     }
 }

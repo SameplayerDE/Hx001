@@ -3,20 +3,10 @@ using Microsoft.Xna.Framework;
 
 namespace Hx001.Framework.Physics2D
 {
-    public class Spring
+    public class Rope : Spring
     {
 
-        public Particle A;
-        public Particle B;
-        public float Stiffness;
-        public float Lenght;
-
-        public Spring()
-        {
-            
-        }
-        
-        public Spring(Particle a, Particle b, float stiffness, float lenght)
+        public Rope(Particle a, Particle b, float stiffness, float lenght)
         {
             A = a;
             B = b;
@@ -24,19 +14,20 @@ namespace Hx001.Framework.Physics2D
             Lenght = lenght;
         }
 
-        public virtual void Update(GameTime gameTime)
+        public override void Update(GameTime gameTime)
         {
             Vector2 force = B.Position - A.Position;
             float x = force.Length() - Lenght;
+            if (force.Length() <= Lenght)
+            {
+                return;
+            }
             force.Normalize();
             force *= (Stiffness * x);
             A.ApplyForce(force);
             force *= -1;
             B.ApplyForce(force);
-            //if (Math.Abs(magnitude - Lenght) > 0.01f)
-            //{
-                
-            //}
+            
         }
 
     }
