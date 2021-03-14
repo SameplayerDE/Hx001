@@ -13,7 +13,7 @@
     </ItemGroup>
     
     <ItemGroup>
-      <Folder Include="Framework\Physics2D\Behavior" />
+      <Folder Include="Framework\Physics2D\Constraints" />
       <Folder Include="Framework\Physics3D\Behavior" />
     </ItemGroup>
 

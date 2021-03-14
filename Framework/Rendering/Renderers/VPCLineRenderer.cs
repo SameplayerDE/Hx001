@@ -7,6 +7,18 @@ namespace Hx001.Framework.Rendering.Renderers
 {
     public static class VPCLineRenderer
     {
+
+        public static Color Color = Color.White;
+
+        public static void SetColor(Color color)
+        {
+            if (Color == color)
+            {
+                return;
+            }
+            Color = color;
+        }
+        
         public static void Render(VPCLineMesh mesh, Effect effect, Matrix world, Matrix view, Matrix projection)
         {
             effect.Parameters["WorldViewProjection"].SetValue(world * view * projection);
@@ -34,7 +46,7 @@ namespace Hx001.Framework.Rendering.Renderers
                 pass.Apply();
                 try
                 {
-                    VertexPositionColor[] mesh = {new VertexPositionColor(from, Color.White), new VertexPositionColor(to, Color.White)};
+                    VertexPositionColor[] mesh = {new VertexPositionColor(from, Color), new VertexPositionColor(to, Color)};
                     Globals.GraphicsDevice.DrawUserPrimitives(PrimitiveType.LineList, mesh, 0, 1);
                 }
                 catch (Exception e)

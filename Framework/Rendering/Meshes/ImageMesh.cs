@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Hx001.Framework.Rendering.Renderers;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Hx001.Framework.Rendering.Meshes
@@ -9,14 +10,29 @@ namespace Hx001.Framework.Rendering.Meshes
         
         public ImageMesh() { }
 
-        public ImageMesh(Texture2D texture, float scale)
+        public ImageMesh(Texture2D texture, float scale, FlipMode flipMode)
         {
-            float x0 = 0f, x1 = 0f, x2 = 1f, x3 = 1f;
-            float y0 = 0f, y1 = 0f, y2 = 0f, y3 = 0f;
-            float z0 = 0f, z1 = 1f, z2 = 0f, z3 = 1f;
+            float x0 = -0.5f, x1 = -0.5f, x2 = 0.50f, x3 = 0.50f;
+            float y0 = 0.00f, y1 = 0.00f, y2 = 0.00f, y3 = 0.00f;
+            float z0 = -0.5f, z1 = 0.50f, z2 = -0.5f, z3 = 0.50f;
 
             float uvx0 = 0f, uvx1 = 0f, uvx2 = 1f, uvx3 = 1f;
             float uvy0 = 1f, uvy1 = 0f, uvy2 = 1f, uvy3 = 0f;
+
+            if (flipMode == FlipMode.X || flipMode == FlipMode.Both)
+            {
+                uvx0 = 1f;
+                uvx1 = 1f;
+                uvx2 = 0f;
+                uvx3 = 0f;
+            }
+            if (flipMode == FlipMode.Y || flipMode == FlipMode.Both)
+            {
+                uvy0 = 0f;
+                uvy1 = 1f;
+                uvy2 = 0f;
+                uvy3 = 1f;
+            }
 
             Vector3 v0, v1, v2, v3;
             Vector2 uv0, uv1, uv2, uv3;
@@ -34,11 +50,15 @@ namespace Hx001.Framework.Rendering.Meshes
             float width = texture.Width * (1 / scale);
             float height = texture.Height * (1 / scale);
 
+            v0.X *= width;
+            v0.Z *= height;
+            v1.X *= width;
             v1.Z *= height;
             v2.X *= width;
+            v2.Z *= height;
             v3.Z *= height;
             v3.X *= width;
-            
+
             Add(new VPTTrianlgeMesh(v0, v1, v2, uv0, uv1, uv2));
             Add(new VPTTrianlgeMesh(v2, v1, v3, uv2, uv1, uv3));
         }
