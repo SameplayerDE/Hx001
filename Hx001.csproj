@@ -11,10 +11,5 @@
     <ItemGroup>
       <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.8.0.1641" />
     </ItemGroup>
-    
-    <ItemGroup>
-      <Folder Include="Framework\Physics2D\Constraints" />
-      <Folder Include="Framework\Physics3D\Behavior" />
-    </ItemGroup>
 
 </Project>

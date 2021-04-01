@@ -6,7 +6,6 @@ namespace Hx001.Framework
     {
 
         public static float DeltaTime;
-        public static float FixedDeltaTime;
 
         public static void Update(GameTime gameTime)
         {

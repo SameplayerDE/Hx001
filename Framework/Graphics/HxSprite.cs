@@ -1,8 +1,5 @@
 ﻿using Hx001.Framework.Components;
-using Hx001.Framework.Physics;
 using Hx001.Framework.Rendering.Renderers;
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 
 namespace Hx001.Framework.Graphics
 {

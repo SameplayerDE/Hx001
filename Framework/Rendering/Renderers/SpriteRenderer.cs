@@ -80,6 +80,7 @@ namespace Hx001.Framework.Rendering.Renderers
             _effect.World = Matrix.CreateTranslation(Sprite.Get<HxTransform>().Position);
             _effect.TextureEnabled = true;
             _effect.Texture = Texture;
+            _effect.DiffuseColor = Color.ToVector3();
             //effect.Parameters["WorldViewProjection"].SetValue(world * view * projection);
 
             /*if (effect.Parameters["Texture"] != null)

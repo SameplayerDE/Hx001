@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Hx001.Framework.Components;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Hx001.Framework
@@ -10,10 +11,8 @@ namespace Hx001.Framework
         Perspective
     }
     
-    public class HxCamera
+    public class HxCamera : HxGameObject
     {
-        //Transform
-        public Transform Transform;
         //Projection
         public ProjectionMode ProjectionMode;
         //Clipping
@@ -46,6 +45,7 @@ namespace Hx001.Framework
 
         public HxCamera(ProjectionMode projectionMode)
         {
+            Attach(new HxTransform());
             ProjectionMode = projectionMode;
         }
 
@@ -88,7 +88,8 @@ namespace Hx001.Framework
 
             //BoundingBox.Min = Position - new Vector3(.25f, .25f, .25f);
             //BoundingBox.Max = Position + new Vector3(.25f, .25f, .25f);
-            ViewMatrix = Matrix.CreateLookAt(Transform.Position, Forward + Transform.Position, Up);
+            ViewMatrix = Matrix.CreateLookAt(Get<HxTransform>().Position, Forward + Get<HxTransform>().Position, Up);
         }
     }
+    
 }
